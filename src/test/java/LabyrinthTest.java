@@ -5,6 +5,7 @@
  */
 
 import com.progmatic.labyrinthproject.Coordinate;
+import com.progmatic.labyrinthproject.LabyrinthImpl;
 import com.progmatic.labyrinthproject.enums.CellType;
 import com.progmatic.labyrinthproject.enums.Direction;
 import com.progmatic.labyrinthproject.exceptions.CellException;
@@ -130,6 +131,7 @@ public class LabyrinthTest {
         Labyrinth l = fromString(lArr);
         assertEquals(new Coordinate(0, 1), l.getPlayerPosition());
         l.movePlayer(Direction.EAST);
+        System.out.println();
         assertEquals(new Coordinate(1, 1), l.getPlayerPosition());
         l.movePlayer(Direction.SOUTH);
         assertEquals(new Coordinate(1, 2), l.getPlayerPosition());
@@ -230,6 +232,7 @@ public class LabyrinthTest {
         Labyrinth l = getLabyrinthImpl();
         l.loadLabyrinthFile("labyrinth1.txt");
         assertSameLabyrinth(l, lSample);
+        //System.out.println(l.getPlayerPosition().getCol() + " " + l.getPlayerPosition().getRow());
         assertEquals(new Coordinate(0, 1), l.getPlayerPosition());
         
         l = getLabyrinthImpl();
@@ -377,22 +380,32 @@ public class LabyrinthTest {
                 l.setCellType(new Coordinate(j, i), type);
             }
         }
+        /*
+        for (int i = 0; i < strArr.length; i++) {
+            for (int j = 0; j < strArr[i].length; j++) {
+                System.out.printf( l.getCellType( new Coordinate(j,i) ).toString() + " " );
+            }
+            System.out.println();
+        }
+        */
+
+
         return l;
     }
-    
-    // TODO
+
     private Labyrinth getLabyrinthImpl() {
-        return null;
+        return new LabyrinthImpl();
     }
     
     // TODO
     private Player getRandomPlayerImpl() {
-        return null;
+        Player player = new com.progmatic.labyrinthproject.Player(2);
+        return player;
     }
     
     // TODO
     private Player getWallFollowerPlayerImpl() {
-        return null;
+        return new com.progmatic.labyrinthproject.Player(1);
     }
     
     // TODO

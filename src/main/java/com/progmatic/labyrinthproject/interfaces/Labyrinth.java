@@ -69,20 +69,20 @@ public interface Labyrinth {
      * A player has finished if and only if they are on the END cell.
      * @return true if player has finished, false otherwise.
      */
-    boolean hasPlayerFinished();
+    boolean hasPlayerFinished() throws CellException;
     
     /**
      * Returns a list of the directions the player could go.
      * @return a list of the possible directions the player could move.
      * The returned list will be always non-empty if a normal labyrinth is loaded.
      */
-    List<Direction> possibleMoves();
+    List<Direction> possibleMoves() throws CellException;
 
     /**
      * Moves and updates the player's position in the given direction.
      * @param direction in which the player wants to move.
      * @throws InvalidMoveException if the player tries to move to an invalid cell (eg WALL).
      */
-    public void movePlayer(Direction direction) throws InvalidMoveException;
+    public void movePlayer(Direction direction) throws InvalidMoveException, CellException;
     
 }
